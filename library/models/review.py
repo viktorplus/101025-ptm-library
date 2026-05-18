@@ -1,5 +1,8 @@
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
+from django.views import defaults
+
+from library.models import Book, User
 
 
 class Review(models.Model):
@@ -22,3 +25,6 @@ class Review(models.Model):
         null=True,
         blank=True
     )
+def __str__(self):
+    rating = self.rating if self.rating else defaults
+    return f"{self.book.name} - {self.reviewer.username} - {rating}"

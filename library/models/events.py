@@ -28,3 +28,7 @@ class EventParticipant(models.Model):
         related_name='events'
     )
     registration_date = models.DateTimeField(default=timezone.now)
+
+def __str__(self):
+    user_list = [user.username for user in self.member.all()]
+    return f"EventParticipant: {user_list} - {self.registration_date}"

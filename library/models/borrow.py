@@ -3,6 +3,8 @@ from datetime import datetime
 from django.db import models
 from django.utils import timezone
 
+from library.models import Book
+
 
 class Borrow(models.Model):
     member = models.ForeignKey(
@@ -41,3 +43,6 @@ class Borrow(models.Model):
         if self.is_returned and self.return_actual_date < datetime.now():
             return False
         return True
+
+def __str__(self):
+    return f'{self.book.name} - {self.member.username} - {self.issue_date}'

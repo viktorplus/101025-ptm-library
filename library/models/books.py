@@ -2,6 +2,27 @@ from django.core.validators import MaxValueValidator
 from django.db import models
 from django.utils import timezone
 
+"""1. Строковое отображение моделей
+
+Обновите каждую модель так, чтобы при работе в админ панели, а так же при
+отображении объекта модели было более описательное отображение.
+
+Ожидаемое поведение:
+
+- Author отображается как имя и фамилия автора.
+- Book отображается как название книги.
+- User отображается как username.
+- Membership отображается как связь пользователя и библиотеки.
+- Library отображается как название библиотеки.
+- Publisher отображается как название издателя.
+- Category отображается как название категории.
+- Posts отображается как заголовок поста.
+- Borrow отображается как выдача книги пользователю.
+- Event отображается как название события и дата события.
+- EventParticipant отображается как регистрация на событие.
+- Review отображается как отзыв на книгу с указанием книги, пользователя и рейтинга.
+
+Метод не должен падать, если часть необязательных полей пустая."""
 
 class Book(models.Model):
     name = models.CharField(max_length=100)
@@ -58,3 +79,7 @@ class Book(models.Model):
         related_name='books',
     )
     published_date = models.DateField(default=timezone.now)
+
+
+def __str__(self):
+    return self.name

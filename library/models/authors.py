@@ -2,6 +2,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 
 
+
 class Author(models.Model):
     name = models.CharField(
         max_length=100,
@@ -29,3 +30,6 @@ class Author(models.Model):
             MaxValueValidator(10)
         ],
     )
+
+    def __str__(self):
+        return f'{self.name} {self.surname}'
